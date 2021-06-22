@@ -8,7 +8,7 @@ class Product < ApplicationRecord
 # ORDER BY s.id asc;
 
   def self.available
-    select('s.id AS seller_id, s.email AS seller_email, s.name AS seller_name, p.id AS product_id, p.name AS product_name, price, description, category')
+    select('s.id AS s_id, p.seller_id, s.email AS seller_email, s.name AS seller_name, p.id AS product_id, p.name AS product_name, price, description, category')
     .from('sellers AS s')
     .joins('INNER JOIN products as p ON s.id = p.seller_id')
     .order('s.id asc')

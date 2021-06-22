@@ -1,7 +1,7 @@
-import React, { useContext } from 'react'
-import { Link, useHistory, useLocation } from 'react-router-dom'
+import React from 'react'
+import { Link, useLocation } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
-import { AuthContext} from '../providers/AuthProvider'
+
 // import styled from 'styled-components'
 // import { BORDER_RADIUS, FONT_SIZES, NAV_BACKGROUND, TEXT_COLOR, WHITE_BACKGROUND } from '../styles/styles'
 
@@ -9,47 +9,25 @@ const NavBar = () => {
   //used to set which link is active
   const {pathname} = useLocation()
   //used to send to another link
-  const history = useHistory()
+
   // authenticated used to see if user is logged in or not.
   // handleLogout logs user out
-  const {authenticated, handleLogout} = useContext(AuthContext)
-  // function to position to the right of navbar.
-  // also has an if else to check for user to see what is needed to display.
-  const getRightNav = () => {
-    if(authenticated){
-      return(
-        <Menu.Menu position='right'>
-          <Menu.Item onClick={()=>handleLogout(history)}>Logout</Menu.Item>
-        </Menu.Menu>
-      )
-    }else{
-      return(
-        <Menu.Menu position='right'>
-          <Link to='/register'>
-            <Menu.Item active={pathname=== '/register'}>Register</Menu.Item>
-          </Link>
-          <Link to='/login'>
-            <Menu.Item active={pathname=== '/login'}>Login</Menu.Item>
-          </Link>
-        </Menu.Menu>
-      )
-    }
-  }
+
+
+
   //this is what is being returned by the NavBar function. if you want it to show up it needs to pass
   //through here eventually.
   return(
     <>
       <Menu pointing secondary>
         <Link to='/'><Menu.Item active={pathname=== '/'}>Home</Menu.Item></Link>
-        <Link to='/about'><Menu.Item active={pathname=== '/about'}>About</Menu.Item></Link>
-        <Link to='/examples'><Menu.Item active={pathname=== '/examples'}>Examples</Menu.Item></Link>
-        <Link to='/tests'><Menu.Item active={pathname=== '/tests'}>Tests</Menu.Item></Link>
-        {getRightNav()}
+        <Link to='/products'><Menu.Item active={pathname=== '/products'}>Products</Menu.Item></Link>
       </Menu>
     </>
   )
 }
 
+//TODO: delete if not in use.
 // Custom NavBar styling
 // <NavContainer >
 //   <NavLink to='/'>Home</NavLink>
