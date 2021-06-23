@@ -13,4 +13,10 @@ class Product < ApplicationRecord
     .joins('INNER JOIN products as p ON s.id = p.seller_id')
     .order('s.id asc')
   end
+
+  def self.category
+    select('id, name, price, description, category')
+    .from('products as p')
+    .order('category asc')
+  end
 end
