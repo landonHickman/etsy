@@ -14,9 +14,24 @@ class Product < ApplicationRecord
     .order('s.id asc')
   end
 
-  def self.category
+#   SELECT id, name, price, description, category
+# from products as p
+# where LOWER(p.category) = 'art'
+
+  def self.by_category(category)
     select('id, name, price, description, category')
     .from('products as p')
+    .where('LOWER(p.category) = ?', category)
     .order('category asc')
+  end
+
+#   SELECT DISTINCT category
+# from products as p
+# ORDER BY category asc;
+  def self.category
+   select('DISTINCT category')
+   .from('products as p')
+   .order('category asc')
+   .to_json(except: :id)
   end
 end

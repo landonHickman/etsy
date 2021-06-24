@@ -22,6 +22,7 @@ const NavBar = () => {
       <Menu pointing secondary>
         <Link to='/'><Menu.Item active={pathname=== '/'}>Home</Menu.Item></Link>
         <Link to='/products'><Menu.Item active={pathname=== '/products'}>Products</Menu.Item></Link>
+        <Link to='/category'><Menu.Item active={pathname=== '/category'}>Category</Menu.Item></Link>
       </Menu>
     </>
   )

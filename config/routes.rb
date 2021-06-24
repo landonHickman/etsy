@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     get '/tests', to: 'tests#index'
     get '/products', to: 'products#index'
     get '/products/category', to: 'products#category'
+    get '/products/:category', to: 'products#by_category'
+  
   end
 end
