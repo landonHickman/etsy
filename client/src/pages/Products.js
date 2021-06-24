@@ -12,15 +12,19 @@ const Products = () => {
   const normalizeProducts = (prod) => {
 
     const sell_id = prod.map(p=> p.seller_id)
-
+    // console.log('sell_id',sell_id)
+    
     const uniqueId = [...new Set(sell_id)]
+    // console.log('uniqueId',uniqueId)
 
     const productData = []
+    // console.log('productData',productData)
 
     uniqueId.forEach(id => {
 
       //creates a new array for each time ap.seller_id === id
       let productsFiltered = prod.filter(ap => ap.seller_id === id)
+      // console.log('productsFiltered',productsFiltered)
 
       const clean = productsFiltered.map(c=> {
         return {
@@ -31,6 +35,7 @@ const Products = () => {
           product_name: c.product_name,
         }
       })
+      // console.log('clean',clean)
 
       let {seller_id, seller_name, seller_email } = productsFiltered[0]
 
@@ -42,6 +47,7 @@ const Products = () => {
       })
     })
     setProducts(productData)
+    // console.log('productData',productData)
   }
 
   const getProducts = async () => {
