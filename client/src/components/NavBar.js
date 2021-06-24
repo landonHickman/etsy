@@ -23,6 +23,7 @@ const NavBar = () => {
         <Link to='/'><Menu.Item active={pathname=== '/'}>Home</Menu.Item></Link>
         <Link to='/products'><Menu.Item active={pathname=== '/products'}>Products</Menu.Item></Link>
         <Link to='/category'><Menu.Item active={pathname=== '/category'}>Category</Menu.Item></Link>
+        <Link to='/findProduct'><Menu.Item active={pathname=== '/findProduct'}>Find Product</Menu.Item></Link>
       </Menu>
     </>
   )
