@@ -1,33 +1,45 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import StringifyJSON from '../components/StringifyJSON'
+import { Select } from 'semantic-ui-react'
+import RenderCategoryItems from '../components/RenderCategoryItems'
 
 const Category = () => {
-  const [category, setCategory] = useState([])
+  const [categories, setCategories] = useState([])
+  const [categoryItems, setCategoryItems] = useState(null)
 
   useEffect(()=>{
     getCategory()
   },[])
 
-  const normalizeCategory = (passin) => {
-    setCategory(passin)
-  }
   const getCategory = async() => {
     try{
       let res = await axios.get(`/api/products/category`)
-      console.log(res)
-      console.log(res.data)
-      normalizeCategory(res.data)
+      setCategories(res.data)
     }catch(err) {
       alert('err')
       console.log(err)
       console.log(err.response)
     }
   }
+
+  const normalizeCategory = () => {
+      return categories.map( c => ({key: c.category, value: c.category.toLowerCase(), text: c.category}))
+  }
+
+  const handleChange = async (e, {value}) => {
+    try {
+      let res = await axios.get(`/api/products/${value}`)
+      setCategoryItems(res.data)
+    } catch (err) {
+      console.log('err',err)
+      console.log('err.response',err.response)
+    }
+  }
+
   return(
     <div>
-      <h1>Category Page</h1>
-      <StringifyJSON json={category}/>
+      <Select onChange={handleChange} placeholder='Select Category' options={normalizeCategory()} />
+      {categoryItems && <RenderCategoryItems categoryItems={categoryItems}/>}
     </div>
   )
 }

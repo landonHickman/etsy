@@ -24,7 +24,7 @@ const RenderTable = (props) => {
               <Table.Row key={p.product_id}>
                 <Table.Cell>{p.product_name}</Table.Cell>
                 <Table.Cell>{p.description}</Table.Cell>
-                <Table.Cell>{p.price}</Table.Cell>
+                <Table.Cell>${p.price}</Table.Cell>
                 <Table.Cell>{p.category}</Table.Cell>
               </Table.Row>
           ))}
