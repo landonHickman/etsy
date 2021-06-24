@@ -29,7 +29,7 @@ cat = [
   seller.buyers.create(name: Faker::Name.name, max_price: rand(50...400), desired_categories: cat.sample(num_cat))
  end
  5.times do
-  seller.products.create(name: Faker::Food.fruits, price: rand(15...400), description: Faker::Food.description, category: cat.sample)
+  seller.products.create(name: Faker::Food.fruits, price: rand(15...400), description: Faker::Lorem.sentence, category: cat.sample)
  end
 end
 

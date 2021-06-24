@@ -13,8 +13,8 @@ const RenderTable = (props) => {
         <Table.Header>
           <Table.Row>
             <Table.HeaderCell>Item</Table.HeaderCell>
-            <Table.HeaderCell>Description</Table.HeaderCell>
             <Table.HeaderCell>Price</Table.HeaderCell>
+            <Table.HeaderCell>Description</Table.HeaderCell>
             <Table.HeaderCell>Category</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
@@ -23,8 +23,8 @@ const RenderTable = (props) => {
           {products.map(p=> (
               <Table.Row key={p.product_id}>
                 <Table.Cell>{p.product_name}</Table.Cell>
-                <Table.Cell>{p.description}</Table.Cell>
                 <Table.Cell>${p.price}</Table.Cell>
+                <Table.Cell>{p.description}</Table.Cell>
                 <Table.Cell>{p.category}</Table.Cell>
               </Table.Row>
           ))}
