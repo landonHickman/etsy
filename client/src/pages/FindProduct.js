@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React, {useEffect, useState} from 'react'
 import { Select } from 'semantic-ui-react'
-import StringifyJSON from '../components/StringifyJSON'
 
 const FindProduct = () => {
   const [sellers, setSellers] = useState([])
@@ -24,7 +23,7 @@ const FindProduct = () => {
     return sellers.map(s => ({key: s.id, text: `${s.name} ${s.item_count} Items`, value: s.id }))
   }
   const handleChange = () => {
-    
+    //TODO:
   }
 
   return (

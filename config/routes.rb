@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get '/products/:category', to: 'products#by_category'
 
     get '/sellers', to: 'sellers#index'
+
+    get '/buyers', to: 'buyers#index'
   
   end
 end
