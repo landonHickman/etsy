@@ -8,7 +8,7 @@ const FindProductItems = (props) => {
         <div style={{textAlign: 'center'}}>
           <Header as='h2' icon>
           <Icon name='ban' color='red'/>
-            No Items
+            No Desired Items or not enough funds. 
           </Header>
         </div>
       )

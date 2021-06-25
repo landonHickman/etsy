@@ -14,19 +14,19 @@ class Buyer < ApplicationRecord
     .where('s.id = ?', id)
   end
 
-  # SELECT p.id, p.name AS item, price, description
-  # FROM buyers as b
-  # INNER JOIN sellers AS s ON s.id = b.seller_id
-  # INNER JOIN products AS p ON s.id = p.seller_id AND p.price <= b.max_price
-  # WHERE b.id = 31
-  # ORDER BY price DESC
+#   SELECT p.id, p.name AS item, price, max_price, description, b.name AS buyer_name, s.name AS seller_name, category, desired_categories
+# FROM buyers as b
+# INNER JOIN sellers AS s ON s.id = b.seller_id
+# INNER JOIN products AS p ON s.id = p.seller_id AND p.category = ANY ('{"Clothing"}')
+# WHERE b.id = 31 AND p.price <= b.max_price 
+# ORDER BY price DESC
 
-  def self.show_products(id)
+  def self.show_products(id, desired_categories)
     select('p.id, b.name, p.name AS item, price, description')
     .from('buyers as b')
-    .joins('INNER JOIN sellers AS s ON s.id = b.seller_id
-            INNER JOIN products AS p ON s.id = p.seller_id AND p.price <= b.max_price')
-    .where('b.id = ?', id)
+    .joins("INNER JOIN sellers AS s ON s.id = b.seller_id
+            INNER JOIN products AS p ON s.id = p.seller_id AND p.category = ANY ('{#{desired_categories.join(',')}}')")
+    .where('b.id = ? AND p.price <= b.max_price', id)
     .order('price DESC')
   end
 end

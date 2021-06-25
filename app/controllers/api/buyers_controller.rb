@@ -5,7 +5,7 @@ class Api::BuyersController < ApplicationController
   end
 
   def show
-    id = Buyer.find(params[:id])
-    render json: Buyer.show_products(id)
+    buyer = Buyer.find(params[:id])
+    render json: Buyer.show_products(buyer.id, buyer.desired_categories)
   end
 end
