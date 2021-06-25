@@ -22,7 +22,7 @@ const Products = () => {
 
     uniqueId.forEach(id => {
 
-      //creates a new array for each time ap.seller_id === id
+      // creates a new array for each time ap.seller_id === id
       let productsFiltered = prod.filter(ap => ap.seller_id === id)
       // console.log('productsFiltered',productsFiltered)
 
