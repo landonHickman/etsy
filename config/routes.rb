@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
     get '/sellers', to: 'sellers#index'
 
-    get '/buyers', to: 'buyers#index'
+    get '/sellers_buyers/:id', to: 'buyers#sellers_buyers'
+    get '/buyers/:id', to: 'buyers#show'
   
   end
 end

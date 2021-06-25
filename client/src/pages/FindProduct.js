@@ -15,8 +15,7 @@ const FindProduct = () => {
     try{
       let res = await axios.get(`/api/sellers`)
       setSellers(res.data)
-      let res1 = await axios.get('/api/buyers')
-      setBuyers(res1.data)
+      console.log(res.data)
     }catch(err){
       console.log('err',err)
       console.log('err.response',err.response)
@@ -31,9 +30,11 @@ const FindProduct = () => {
     return buyers.map(s => ({key: s.id, text: `${s.name}`, value: s.id }))
   }
 
-  const handleSellerChange = async () => {
+  const handleSellerChange = async (e, {value}) => {
     try{
-      setShowBuyers(!showBuyers) 
+      let res1 = await axios.get(`/api/sellers_buyers/${value}`)
+      setBuyers(res1.data)
+      setShowBuyers(true) 
     }catch(err){
       console.log('err',err)
     }
