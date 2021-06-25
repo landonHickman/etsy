@@ -22,14 +22,26 @@ cat = [
   'Gifts'
 ]
 
-5.times do
- seller = Seller.create(name: Faker::Name.name, email: Faker::Internet.email)
- 5.times do
+15.times do
+ seller = Seller.create(
+   name: Faker::Name.name, 
+   email: Faker::Internet.email
+  )
+ 10.times do
   num_cat = rand(0..cat.length-1)
-  seller.buyers.create(name: Faker::Name.name, max_price: rand(50...400), desired_categories: cat.sample(num_cat))
+  seller.buyers.create(
+    name: Faker::Name.name,
+    max_price: rand(50...400), 
+    desired_categories: cat.sample(num_cat)
+  )
  end
- 5.times do
-  seller.products.create(name: Faker::Food.fruits, price: rand(15...400), description: Faker::Lorem.sentence, category: cat.sample)
+ 15.times do
+  seller.products.create(
+    name: Faker::Food.fruits, 
+    price: rand(15...400), 
+    description: Faker::Lorem.sentence, 
+    category: cat.sample
+  )
  end
 end
 
