@@ -11,4 +11,8 @@ class Api::ProductsController < ApplicationController
     category = params[:category]
     render json: Product.by_category(category)
   end
+
+  def category_sum
+    render json: Product.cat_sum
+  end
 end

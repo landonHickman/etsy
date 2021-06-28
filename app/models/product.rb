@@ -34,4 +34,17 @@ class Product < ApplicationRecord
    .order('category asc')
    .to_json(except: :id)
   end
+
+  # SELECT DISTINCT category, SUM(price) AS total_price
+  # from products as p
+  # GROUP BY category
+  # ORDER BY total_price desc
+
+  def self.cat_sum
+    select('DISTINCT category, SUM(price) AS total_price')
+    .from('products')
+    .group('category')
+    .order('total_price desc')
+    .to_json(except: :id)
+  end
 end
