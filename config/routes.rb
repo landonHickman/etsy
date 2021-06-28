@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get '/products/:category', to: 'products#by_category'
 
     get '/sellers', to: 'sellers#index'
+    get '/sellers/avg_price', to: 'sellers#avg_price'
+
 
     get '/sellers_buyers/:id', to: 'buyers#sellers_buyers'
     get '/buyers/:id', to: 'buyers#show'

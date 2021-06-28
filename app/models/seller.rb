@@ -15,4 +15,17 @@ class Seller < ApplicationRecord
     .group('s.id, s.name')
     .order('s.name asc')
   end
+
+#   SELECT DISTINCT s.name,
+# STRING_AGG(CAST(price AS VARCHAR), ', ') AS prices
+# FROM sellers AS s
+# INNER JOIN products AS p ON p.seller_id = s.id
+# GROUP BY s.name
+  def self.seller_and_prices
+    select("s.name, STRING_AGG(CAST(price AS VARCHAR), ', ') AS prices")
+    .from('sellers AS s')
+    .joins('INNER JOIN products AS p ON p.seller_id = s.id')
+    .group('s.name')
+    .to_json(except: :id)
+  end
 end
