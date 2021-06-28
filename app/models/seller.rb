@@ -16,13 +16,12 @@ class Seller < ApplicationRecord
     .order('s.name asc')
   end
 
-#   SELECT DISTINCT s.name,
-# STRING_AGG(CAST(price AS VARCHAR), ', ') AS prices
-# FROM sellers AS s
-# INNER JOIN products AS p ON p.seller_id = s.id
-# GROUP BY s.name
+  # SELECT DISTINCT s.name, ROUND(AVG(price), 2) AS average_price
+  # FROM sellers AS s
+  # INNER JOIN products AS p ON p.seller_id = s.id
+  # GROUP BY s.name
   def self.seller_and_prices
-    select("s.name, STRING_AGG(CAST(price AS VARCHAR), ', ') AS prices")
+    select("s.name, ROUND(AVG(price), 2) AS average_price")
     .from('sellers AS s')
     .joins('INNER JOIN products AS p ON p.seller_id = s.id')
     .group('s.name')
